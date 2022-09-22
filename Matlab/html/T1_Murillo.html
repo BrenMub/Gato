@@ -1,0 +1,1033 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>T1_Murillo</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-09-21"><meta name="DC.source" content="T1_Murillo.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1></h1><!--introduction--><p>El documento suministrado se public&oacute; como <img src="T1_Murillo_eq08125512643579552072.png" alt="$\texttt{.tex}$"> con el archivo de estilo <img src="T1_Murillo_eq10322359203061681327.png" alt="$\texttt{matlab2latex.tex}$"> mediante el comando</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#84">Funciones</a></li></ul></div><pre class="language-matlab">publish(<span class="string">'T1_Murillo'</span>,<span class="string">'format'</span>,<span class="string">'latex'</span>,<span class="string">'stylesheet'</span>,<span class="string">'matlab2latex.tex'</span>)
+</pre><p><b>Respuesta Corta</b></p><p>1) Para aproximar num&eacute;ricamente la soluci&oacute;n de la ecuaci&oacute;n <img src="T1_Murillo_eq15477866178201429908.png" alt="$|x^2-1|=0$"> se puede usar el m&eacute;todo de aproximaciones sucesivas pues se puede encontrar un conjunto convexo, compacto y no vac&iacute;o en R que contenga las ra&iacute;ces y como la funci&oacute;n es continua, entonces existe el punto fijo por el teorema 2.5. Adem&aacute;s, el m&eacute;todo de bisecci&oacute;n no es factible usarlo pues la funci&oacute;n no tiene imag&aacute;nes negativas, el de Newton tampoco pues la derivada se indefine en dos puntos, igual que con el de secante.</p><p>2) Al usar el m&eacute;todo de Newton en la ecuaci&oacute;n <img src="T1_Murillo_eq07176330483324662079.png" alt="$x^100 = 0$"> se espera que este falle, pues <img src="T1_Murillo_eq09480548260474624872.png" alt="$\frac{d(x^100)}{dx} = 100x^{99}$">, es importante notar que conforme se efect&uacute;e el proceso, como la ra&iacute;z de esa ecuaci&oacute;n es cero, la derivada se va a acercar a cero, por lo que se indefinir&iacute;a.</p><p>3) Para determinar num&eacute;ricamente la multiplicidad de dicho cero, basta con calcular la derivada de f, despu&eacute;s la de f&acute; y as&iacute; sucesivamente, la multiplicidad estara dada por la cantidad de derivadas que hemos realizado hasta que se anule al evaluar c, i.e. la primera vez que se anule una de las derivadas al evaluar en c.</p><p>4) No tiene sentido realizar mas de 52 iteraciones pues note que si realizamos 52 iteraciones el error estara dado por:</p><p></p><p>el cual es menor que el epsilon de la maquina en precision doble.</p><p>5a) Para el polinomio <img src="T1_Murillo_eq16665939532984370906.png" alt="$p(x) = a_nx^n + ... + a_1x + a_0$">, si se desea conocer <img src="T1_Murillo_eq04779112113446531570.png" alt="$p(x_0)$"> es necesario efectuar <img src="T1_Murillo_eq13137663636256675589.png" alt="$(n^2+n)/2$"> y n sumas.</p><p>5b) Para este algoritmo, se deben realizar en cada iteraci&oacute;n una suma y una multiplicaci&oacute;n, como son n iteraciones, en total se realizan n sumas y n multiplicaciones.</p><p>6) El polinomio de Lagrange para <img src="T1_Murillo_eq09884200480341521790.png" alt="$f(x) = x^2 + 3x +1$"> es &eacute;l mismo, pues es un polinomio, de igual forma si se calcula obtenemos:</p><p></p><p><b>Desarrollo</b></p><p>1) Al ejecutar el c&oacute;digo suministrado, se obtiene para <img src="T1_Murillo_eq17891597053910494333.png" alt="$n=10$"> (note que en este caso se ejecuta el c&oacute;digo)</p><pre class="codeinput">n = 1478;
+f = []; g = [];
+f(1)=0;
+f(2)=1;
+<span class="keyword">for</span> i=2:(n-1)
+    f(i+1)=f(i)+f(i-1);
+<span class="keyword">end</span>
+
+g(n)=f(n);
+g(n-1)=f(n-1);
+<span class="keyword">for</span> i=(n-1):-1:2
+    g(i-1)=g(i+1)-g(i);
+<span class="keyword">end</span>
+</pre><p>Sabemos que el t&eacute;rmino n de la sucesi&oacute;n de Fibonacci est&aacute; dado por:</p><p></p><p></p><p>Note que para n suficientemente grande la siguiente expresi&oacute;n tiende a 0</p><p></p><p>Entonces, basta con resolver la siguiente desigualdad para <img src="T1_Murillo_eq17555110721583917243.png" alt="$n$">, pues en precisi&oacute;n doble el &uacute;ltimo valor que puede almacenar en la computadora es <img src="T1_Murillo_eq07792321187987163364.png" alt="$2^{1023}$">.</p><p></p><p>Al calcular la expresi&oacute;n anterior se obtiene que <img src="T1_Murillo_eq06759645131735031318.png" alt="$n &gt; 1475,22$">, i.e. n debe ser aproximadamente 1476.</p><p>1b) Para n&uacute;meros medianos f(1) y g(1) ser&aacute;n diferentes debido al redondeo pues la computadora &uacute;nicamente puede guardar n&uacute;meros completos si son menores de 10^16, es por ello que para encontrar el m&iacute;nimo valor de n donde f(1) y g(1) son diferentes basta con calcular:</p><p></p><p>Al calcular la expresi&oacute;n anterior se obtiene que <img src="T1_Murillo_eq06228459903344964575.png" alt="$n &gt; 78,23$">, i.e. n debe ser aproximadamente 79. Es importante notar que igual al ejercicio anterior despreciamos la expresi&oacute;n que tiende a 0.</p><p>1c)</p><pre class="codeinput"><span class="comment">%Estimacion del inciso (a)</span>
+
+f(1476)
+</pre><pre class="codeoutput">
+ans =
+
+  8.0776e+307
+
+</pre><p>Note que en el inciso (a) obtuvimos que el m&iacute;nimo valor en el que el algoritmo comienza a fallar es en 1476, sin embargo, esto no sucede as&iacute;.</p><pre class="codeinput">f(1478)
+</pre><pre class="codeoutput">
+ans =
+
+   Inf
+
+</pre><p>No obstante, el algoritmo comienza a fallar tan solo 2 n&uacute;meros despu&eacute;s, en 1478.</p><pre class="codeinput"><span class="comment">%Estimacion del inciso (b)</span>
+
+n = 79;
+f = []; g = [];
+f(1)=0;
+f(2)=1;
+<span class="keyword">for</span> i=2:(n-1)
+    f(i+1)=f(i)+f(i-1);
+<span class="keyword">end</span>
+
+g(n)=f(n);
+g(n-1)=f(n-1);
+<span class="keyword">for</span> i=(n-1):-1:2
+    g(i-1)=g(i+1)-g(i);
+<span class="keyword">end</span>
+
+f(1)
+g(1)
+</pre><pre class="codeoutput">
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+</pre><p>Observe que ambos valores siguen siendo el mismo</p><pre class="codeinput">n = 80;
+f = []; g = [];
+f(1)=0;
+f(2)=1;
+<span class="keyword">for</span> i=2:(n-1)
+    f(i+1)=f(i)+f(i-1);
+<span class="keyword">end</span>
+
+g(n)=f(n);
+g(n-1)=f(n-1);
+<span class="keyword">for</span> i=(n-1):-1:2
+    g(i-1)=g(i+1)-g(i);
+<span class="keyword">end</span>
+
+f(1)
+g(1)
+</pre><pre class="codeoutput">
+ans =
+
+     0
+
+
+ans =
+
+   8.9444e+15
+
+</pre><p>Note que en este caso g(1) y f(1) son distintos, tan solo un numero mayor a lo calculado en el inciso (b)</p><p>2a) Como la computadora no tiene implementada la divisi&oacute;n, entonces debemos intentar encontrar otra forma de usar Newton.</p><p>Note que: <img src="T1_Murillo_eq11105348381575859280.png" alt="$f'(x) = \frac{-1}{x^2}$">, entonces podemos escribir Newton como:</p><p></p><p>Al simplificar obtenemos:</p><p></p><p>Para verificar las condiciones, suponga que <img src="T1_Murillo_eq16721215949498569625.png" alt="$\displaystyle\lim_{n \to \infty} x_{n-1} = x$"></p><p>Note que</p><p></p><p>Entonces</p><p></p><p></p><p>2b) Implementamos el algoritmo anterior:</p><pre class="language-matlab"><span class="keyword">function</span> c1 = myDivision(c0, b)
+c1 = c0 + c0*(1 -b*c0);
+<span class="keyword">while</span>(abs(c1-c0)&gt;=eps)
+c0 = c1;
+c1 = c0 + c0*(1 -b*c0);
+</pre><pre class="language-matlab"><span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><p>2c)</p><pre class="codeinput">b = pi;
+c0= linspace(0,1,1e5); <span class="comment">%valores que toman los c0</span>
+
+c1 = myDivision(c0, b);
+
+<span class="comment">%Valor de convergencia en funci&oacute;n de c0</span>
+
+xx = c0;
+yy = nan(size(xx));
+
+<span class="keyword">for</span> i = 1: numel(xx)
+    yy(i) = myDivision(xx(i), b);
+<span class="keyword">end</span>
+
+figure
+semilogx(xx,yy, <span class="string">'MarkerSize'</span>, 20)
+
+<span class="comment">%Titulo</span>
+title(<span class="string">'Gr&aacute;fico 1 :Convergencia en funci&oacute;n de c0'</span>)
+
+<span class="comment">%Nombrar ejes</span>
+xlabel(<span class="string">'$x_0$ : valores iniciales'</span>, <span class="string">'Interpreter'</span>, <span class="string">'latex'</span>)
+ylabel(<span class="string">'Valores de convergencia'</span>, <span class="string">'Interpreter'</span>, <span class="string">'latex'</span>)
+</pre><img vspace="5" hspace="5" src="T1_Murillo_01.png" alt=""> <p>Tome delta de la siguiente forma:</p><p></p><p></p><p></p><p></p><p>2d) Aplicar&iacute;a bisecci&oacute;n primero, para poder encontrar un x0 lo suficientemente cerca de su ra&iacute;z.</p><p>3a) Note que por conmutatividad del producto se sigue que</p><p></p><p>Procedemos a calcular <img src="T1_Murillo_eq13795951815780802027.png" alt="$l'(\theta)$"> Note que</p><p></p><p>Por (1) y (2), se sigue que</p><p></p><p>Entonces</p><p></p><p>Al despejar e igualar a 0, obtenemos los puntos cr&iacute;ticos de <img src="T1_Murillo_eq17156983823835371548.png" alt="$l(\theta)$"></p><p></p><p>donde N = H+ M.</p><p>Adem&aacute;s, este punto cr&iacute;tico en efecto es el m&aacute;ximo pues <img src="T1_Murillo_eq18099078544264756444.png" alt="$l''(\theta) < 0$"> y por el criterio de la segunda derivada podemos asegurar que es el m&aacute;ximo.</p><p>3b)</p><pre class="codeinput"><span class="comment">%Leemos el archivo</span>
+T = readtable(<span class="string">'data.txt'</span>);
+</pre><p>3c)</p><pre class="codeinput"><span class="comment">%Vectorizamos los datos</span>
+m = T.Machos;
+h = T.Hembras;
+
+<span class="comment">%Procedemos a calcular el valor que maximiza los datos suministrados</span>
+
+<span class="comment">%Cantidad total de machos</span>
+suma_m = sum(m);
+
+<span class="comment">%Cantidad total de hembras</span>
+suma_h = sum(h);
+
+<span class="comment">%Valor que maximiza</span>
+maximo = suma_h/(suma_m + suma_h)
+</pre><pre class="codeoutput">
+maximo =
+
+    0.4946
+
+</pre><p>3d)</p><pre class="codeinput">f = @(x) suma_h/x - suma_m/(1-x);
+
+Secante(f,0.30,0.60)
+</pre><pre class="codeoutput">
+ans =
+
+    0.4946
+
+</pre><p>3e)</p><pre class="codeinput">[x,fval,exitflag,output,jacob] = fsolve(f,0.50);
+
+<span class="comment">% Resultado del fsolve</span>
+disp(x)
+
+<span class="comment">%Algoritmo usado</span>
+disp(output)
+</pre><pre class="codeoutput">
+Equation solved.
+
+fsolve completed because the vector of function values is near zero
+as measured by the value of the function tolerance, and
+the problem appears regular as measured by the gradient.
+
+    0.4946
+
+       iterations: 1
+        funcCount: 4
+        algorithm: 'trust-region-dogleg'
+    firstorderopt: 3.3382e-10
+          message: 'Equation solved.&#8629;&#8629;fsolve completed because the vector of function values is near zero&#8629;as measured by the value of the function tolerance, and&#8629;the problem appears regular as measured by the gradient.&#8629;&#8629;&lt;stopping criteria details&gt;&#8629;&#8629;Equation solved. The sum of squared function values, r = 1.292470e-26, is less than&#8629;sqrt(options.FunctionTolerance) = 1.000000e-03. The relative norm of the gradient of r,&#8629;3.338242e-10, is less than options.OptimalityTolerance = 1.000000e-06.'
+
+</pre><p>4a) Por el teorema 2.10 de las notas sabemos que basta con demostrar que una funci&oacute;n es continua y que el valor absoluto de su derivada se puede acotar por una constante menor que 1 para que el proceso de iteraci&oacute;n simple converja a su punto fijo. Note que <img src="T1_Murillo_eq14589690767754291536.png" alt="$g(x) = x -(x^2 -3)/2$"> es claramente continuo pues es un polinomio. Procedemos a analizar la derivada de g Note que <img src="T1_Murillo_eq14908715895523298519.png" alt="$|g'(x) |= |1 -x|$">, la cual es una funci&oacute;n creciente y alcanza su m&aacute;ximo en su extremo derecho en el valor de 1, entonces podemos asegurar que para todo <img src="T1_Murillo_eq14520748770584809573.png" alt="$x \in (a,b)$"> sucede que <img src="T1_Murillo_eq13510984138906414073.png" alt="$|g'(x)| < 1$">.</p><p>4b)</p><pre class="codeinput">g = @(x) x -(x.^2 -3)./2;
+raiz = 1.732050807568877; <span class="comment">%Valor de sqrt{3} con 15 decimales</span>
+
+[c, secS] = iterSimple(g, 1.5);
+
+
+semilogy(1:numel(secS),abs(secS-raiz)/abs(raiz),<span class="string">'.-'</span>,<span class="string">'MarkerSize'</span>,10);
+
+
+<span class="comment">%Titulo</span>
+title(<span class="string">'Gr&aacute;fico 2 :Error relativo en funci&oacute;n del n&uacute;mero de iteraciones'</span>)
+
+<span class="comment">%Nombrar ejes</span>
+xlabel(<span class="string">'Cantidad de iteraciones'</span>)
+ylabel(<span class="string">'Error relativo'</span>)
+</pre><img vspace="5" hspace="5" src="T1_Murillo_02.png" alt=""> <p>&iquest;Cual es la pendiente de la recta en su grafica? &iquest;Qu&eacute; representa dicha pendiente?</p><p>Procedemos a calcular la pendiente de la recta</p><pre class="codeinput">pendiente = ((abs(secS(36)-raiz)/abs(raiz)) - (abs(secS(30)-raiz)/abs(raiz)))/(36-30)
+</pre><pre class="codeoutput">
+pendiente =
+
+  -1.9444e-06
+
+</pre><p>La pendiente de la recta representa la velocidad a la que disminuye el error, en este caso podemos observar que el error decrece de forma lineal.</p><p>4c)</p><pre class="codeinput">a = nan(1,79);
+
+<span class="keyword">for</span> k = 1:79
+    a(k) = ( secS(k)*secS(k+2) - (secS(k+1)^2) )/ (secS(k) + secS(k+2) - 2*secS(k+1));
+<span class="keyword">end</span>
+<span class="comment">%Graficar:</span>
+
+semilogy(1:numel(a),abs(raiz - a)/abs(raiz),<span class="string">'.-'</span>,<span class="string">'MarkerSize'</span>,10)
+
+<span class="comment">%Titulo</span>
+title(<span class="string">'Grafico 3 :Error relativo de $a$ en funcion del numero de iteraciones'</span>, <span class="string">'Interpreter'</span>, <span class="string">'Latex'</span>)
+
+<span class="comment">%Nombrar ejes</span>
+xlabel(<span class="string">'Cantidad de iteraciones'</span>)
+ylabel(<span class="string">'Error relativo de a'</span>,<span class="string">'Interpreter'</span>, <span class="string">'Latex'</span> )
+</pre><img vspace="5" hspace="5" src="T1_Murillo_03.png" alt=""> <p>La convergencia parece ser m&aacute;s r&aacute;pida en el 4c sin embargo, no para todas las iteraciones pues despu&eacute;s de treinta y tres el error comienza a oscilar.</p><pre class="codeinput"><span class="comment">% El gr&aacute;fico decrece de forma lineal aproximadamente hasta la iteraci&oacute;n treinta,</span>
+<span class="comment">% despu&eacute;s de eso oscila, despu&eacute;s de la iteraci&oacute;n treinta no presenta</span>
+<span class="comment">% monoton&iacute;a, i.e. el error decrece linealmente hasta 30 y despu&eacute;s oscila.</span>
+</pre><p>5a)</p><pre class="codeinput">load(<span class="string">'dataPolin.mat'</span>)
+
+size(dataX)
+size (dataY)
+</pre><pre class="codeoutput">
+ans =
+
+    11     1
+
+
+ans =
+
+    11     1
+
+</pre><p>5b)</p><pre class="codeinput">pn = polyfit(dataX, dataY, 10)
+</pre><pre class="codeoutput">
+pn =
+
+  Columns 1 through 7
+
+   31.2177 -120.1321  -90.8847  245.8358   90.1895 -159.6097  -34.4710
+
+  Columns 8 through 11
+
+   36.0627    3.8656   -1.9053    0.5853
+
+</pre><p>La salida pn se interpreta como los coeficientes de un polinomio de grado 10. Este debe ser de grado 10 pues hay 10 + 1 nodos.</p><p>5c)</p><pre class="codeinput">xx = linspace(-1,1);
+yy = polyval(pn, xx);
+
+figure
+plot(xx,yy), hold <span class="string">on</span>
+plot(dataX,dataY,<span class="string">'.'</span>, <span class="string">'MarkerSize'</span>, 15)
+
+<span class="comment">%Titulo</span>
+title(<span class="string">'Gr&aacute;fico 4 :Polinomio de interpolaci&oacute;n'</span>)
+
+<span class="comment">%Nombrar ejes</span>
+ylabel(<span class="string">'Polinomio pn'</span>)
+xlabel(<span class="string">'Intervalos'</span>) <span class="comment">%?????????</span>
+</pre><img vspace="5" hspace="5" src="T1_Murillo_04.png" alt=""> <p>5d)</p><pre class="codeinput"><span class="comment">%Creamos dos vectores que contengan los datos de los nodos 1,5,10</span>
+nodos_nuevosX = [dataX(1) dataX(5) dataX(10)];
+nodos_nuevosY = [dataY(1) dataY(5) dataY(10)];
+
+pn_nuevo = polyfit(nodos_nuevosX, nodos_nuevosY, 2);
+yy_1 = polyval(pn_nuevo, xx);
+
+figure
+plot(xx,yy_1), hold <span class="string">on</span>
+plot(nodos_nuevosX, nodos_nuevosY,<span class="string">'.'</span>, <span class="string">'MarkerSize'</span>, 15)
+
+<span class="comment">%Titulo</span>
+title(<span class="string">'Gr&aacute;fico 4 :Polinomio de interpolaci&oacute;n'</span>)
+
+<span class="comment">%Nombrar ejes</span>
+ylabel(<span class="string">'Polinomio pn'</span>)
+xlabel(<span class="string">'Intervalos'</span>) <span class="comment">%?????????</span>
+</pre><img vspace="5" hspace="5" src="T1_Murillo_05.png" alt=""> <pre class="codeinput"><span class="comment">%Cu&aacute;l es mejor? No tiene sentido realizar esta pregunta pues son funciones</span>
+<span class="comment">%realizadas con diferente cantidad de nodos.</span>
+</pre><pre class="codeinput">close <span class="string">all</span>
+</pre><p><b>C&oacute;digo de funciones</b></p><h2 id="84">Funciones</h2><pre class="codeinput"><span class="keyword">function</span> c1 = myDivision(c0, b)
+    c1 = c0 + c0.*(1 -b.*c0);
+
+    <span class="keyword">while</span>(abs(c1-c0)&gt;=eps)
+        c0 = c1;
+        c1 = c0 + c0.*(1 -b.*c0);
+
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> [root,seq] = iterSimple(f,x0)
+    Tol = eps;
+    iterMax = 80;
+    k = 1;
+    seq = [x0 f(x0)];
+    <span class="keyword">while</span>(Tol &amp;&amp; k&lt;iterMax)
+        seq = [seq f(seq(end))];
+        k = k+1;
+    <span class="keyword">end</span>
+    root = seq(end);
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> [root,seq] = Secante(f,x0,x1)
+  Tol = 1e-8;
+  iterMax = 100;
+  count = 0;
+  f0 = f(x0);
+  f1 = f(x1);
+  <span class="keyword">if</span>(abs(f0)&lt;Tol)
+      root = x0; seq = x0;
+  <span class="keyword">elseif</span>(abs(f1)&lt;Tol)
+      root = x1; seq = x1;
+  <span class="keyword">else</span>
+      seq = zeros(iterMax,1);
+      xNew = x1 - f1*(x1-x0)/(f1-f0);
+      fNew = f(xNew);
+      seq(count+1) = xNew;
+      <span class="keyword">while</span>(count&lt;iterMax &amp;&amp; abs(x1-x0)&gt;Tol)
+        count = count + 1;
+        x0 = x1;
+        x1 = xNew;
+        f0 = f1;
+        f1 = fNew;
+        xNew = x1 - f1*(x1-x0)/(f1-f0);
+        fNew = f(xNew);
+        seq(count+1) = xNew;
+      <span class="keyword">end</span>
+      root = xNew;
+      seq = seq(1:count+1);
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%
+%
+% El documento suministrado se publicó como $\texttt{.tex}$ con el archivo
+% de estilo $\texttt{matlab2latex.tex}$ mediante el comando
+
+%%
+%
+%   publish('T1_Murillo','format','latex','stylesheet','matlab2latex.tex')
+
+%%
+% *Respuesta Corta*
+
+%%
+%
+% 1) Para aproximar numéricamente la solución de la ecuación $|x^2-1|=0$ se
+% puede usar el método de aproximaciones sucesivas pues se puede encontrar
+% un conjunto convexo, compacto y no vacío en R que contenga las raíces y como la función es
+% continua, entonces existe el punto fijo por el teorema 2.5. Además, el método de bisección no es factible
+% usarlo pues la función no tiene imagánes negativas, el de Newton tampoco
+% pues la derivada se indefine en dos puntos, igual que con el de secante.  
+% 
+
+%%
+%
+% 2) Al usar el método de Newton en la ecuación $x^100 = 0$ se espera que
+% este falle, pues $\frac{d(x^100)}{dx} = 100x^{99}$, es importante notar que
+% conforme se efectúe el proceso, como la raíz de esa ecuación es cero, la
+% derivada se va a acercar a cero, por lo que se indefiniría. 
+% 
+
+%%
+%
+% 3)
+% Para determinar numéricamente la multiplicidad de dicho cero, basta con
+% calcular la derivada de f, después la de f´ y así sucesivamente, la
+% multiplicidad estara dada por la cantidad de derivadas que hemos
+% realizado hasta que se anule al evaluar c, i.e. la primera vez que se
+% anule una de las derivadas al evaluar en c. 
+%%
+%
+% 4)
+% No tiene sentido realizar mas de 52 iteraciones pues note que si
+% realizamos 52 iteraciones el error estara dado por:
+%%
+% <latex>
+% \begin{align*}
+% e_{52} < \frac{1}{2^{53}}\abs(2-1) \\
+% \Rightarrow e_{52} < \frac{1}{2^{53}}
+% \end{align*}
+% </latex>
+%%
+% el cual es menor que el epsilon de la maquina en precision doble. 
+
+
+
+%%
+%
+% 5a) Para el polinomio $p(x) = a_nx^n + ... + a_1x + a_0$, si se desea conocer $p(x_0)$ es necesario
+% efectuar $(n^2+n)/2$ y n sumas. 
+% 
+
+%%
+%
+% 5b)
+% Para este algoritmo, se deben realizar en cada iteración una suma y una
+% multiplicación, como son n iteraciones, en total se realizan n sumas y n
+% multiplicaciones. 
+
+%%
+%
+% 
+% 6)
+% El polinomio de Lagrange para $f(x) = x^2 + 3x +1$ es él mismo, pues es un polinomio, de igual forma si se calcula obtenemos: 
+
+%%
+% <latex>
+% \begin{align*}
+% \frac{(x-1)}{-1} \frac{(x-2)}{-2}+ 5 \left(\frac{x}{1} \frac{(x-2)}{1-2}\right) + 15 \left(\frac{x}{2} \frac{(x-1)}{2-1}\right) = x^2 + 3x +1
+% \end{align*}
+% </latex>
+%%
+% *Desarrollo*
+
+%%
+%
+% 1)
+% Al ejecutar el código suministrado, se obtiene para $n=10$ (note que en este caso se
+% ejecuta el código)
+n = 1478;
+f = []; g = [];
+f(1)=0;
+f(2)=1;
+for i=2:(n-1)
+    f(i+1)=f(i)+f(i-1);
+end
+
+g(n)=f(n);
+g(n-1)=f(n-1);
+for i=(n-1):-1:2
+    g(i-1)=g(i+1)-g(i);
+end
+
+%%
+% Sabemos que el término n de la sucesión de Fibonacci está dado por:
+
+%%
+% <latex>
+% \begin{align*}
+% f(n) = \frac{1}{\sqrt{5}} \left( \phi^n - \frac{(-1)^n}{\phi^n} \right)
+% \end{align*}
+% </latex>
+
+%%
+% <latex>
+% tq \phi = \frac{1+ \sqrt{5}}{2}
+% </latex>
+
+%%
+% Note que para n suficientemente grande la siguiente expresión tiende a 0
+
+%%
+% <latex>
+% \begin{align*}
+% \frac{(-1)^n}{\phi^n}
+% \end{align*}
+% </latex>
+
+%% 
+% Entonces, basta con resolver la siguiente desigualdad para $n$, pues en precisión
+% doble el último valor que puede almacenar en la computadora es $2^{1023}$. 
+
+%%
+% <latex>
+% \begin{align*}
+%  2^{1023} < \frac{\phi^n}{\sqrt{5}}  
+% \end{align*}
+% </latex>
+
+%% 
+% Al calcular la expresión anterior se obtiene que $n > 1475,22$, i.e. n
+% debe ser aproximadamente 1476. 
+
+%%
+% 1b) Para números medianos f(1) y g(1) serán diferentes debido al
+% redondeo pues la computadora únicamente puede guardar números completos
+% si son menores de 10^16, es por ello que para encontrar el mínimo valor de
+% n donde f(1) y g(1) son diferentes basta con calcular: 
+
+%%
+% <latex>
+% \begin{align*}
+%  10^{16} < \frac{\phi^n}{\sqrt{5}}  
+% \end{align*}
+% </latex>
+
+%%
+% Al calcular la expresión anterior se obtiene que $n > 78,23$, i.e. n
+% debe ser aproximadamente 79. Es importante notar que igual al ejercicio
+% anterior despreciamos la expresión que tiende a 0. 
+
+%% 
+% 1c)
+
+%Estimacion del inciso (a)
+
+f(1476)
+
+%%
+% Note que en el inciso (a) obtuvimos que el mínimo valor en el que el
+% algoritmo comienza a fallar es en 1476, sin embargo, esto no
+% sucede así. 
+%%
+f(1478)
+%%
+% No obstante, el algoritmo comienza a fallar tan solo 2 números después,
+% en 1478. 
+
+%%
+%Estimacion del inciso (b)
+
+n = 79;
+f = []; g = [];
+f(1)=0;
+f(2)=1;
+for i=2:(n-1)
+    f(i+1)=f(i)+f(i-1);
+end
+
+g(n)=f(n);
+g(n-1)=f(n-1);
+for i=(n-1):-1:2
+    g(i-1)=g(i+1)-g(i);
+end
+
+f(1)
+g(1)
+%%
+% Observe que ambos valores siguen siendo el mismo
+
+%%
+n = 80;
+f = []; g = [];
+f(1)=0;
+f(2)=1;
+for i=2:(n-1)
+    f(i+1)=f(i)+f(i-1);
+end
+
+g(n)=f(n);
+g(n-1)=f(n-1);
+for i=(n-1):-1:2
+    g(i-1)=g(i+1)-g(i);
+end
+
+f(1)
+g(1)
+
+%%
+% Note que en este caso g(1) y f(1) son distintos, tan solo un numero mayor
+% a lo calculado en el inciso (b)
+
+
+%%
+% 2a)
+% Como la computadora no tiene implementada la división, entonces debemos
+% intentar encontrar otra forma de usar Newton. 
+%%
+% Note que: $f'(x) = \frac{-1}{x^2}$, entonces podemos escribir Newton como: 
+
+%%
+% <latex>
+% \begin{align*}
+% c_k = c_{k-1} - x^2\left(\frac{1}{x} -b\right)
+% \end{align*}
+% </latex>
+%%
+% Al simplificar obtenemos: 
+%%
+% <latex>
+% \begin{align*}
+%  c_k = c_{k-1} + c_{k-1}(1-bc_{k-1})
+% \end{align*}
+% </latex>
+%%
+% Para verificar las condiciones, suponga que $\displaystyle\lim_{n \to \infty} x_{n-1} = x$
+%%
+% Note que 
+%%
+% <latex>
+% \begin{align*}
+% \lim_{n \to \infty} x_n = \displaystyle\lim_{n \to \infty} x_{n-1} + x_{n-1} - bx_{n-1}^2
+% \end{align*}
+% </latex>
+
+
+
+%% 
+% Entonces
+%%
+% <latex>
+% \begin{align*}
+% x = x + x -bx^2 
+% \Rightarrow x = \frac{1}{b}
+% \end{align*}
+% </latex>
+
+%%
+% <latex>
+% Como la función es de clase $C^2$, $f(1/b) = 0$ y $f'(1/b) \nq 0$, por el
+% teorema 2.1 podemos asegurar que existe un intervalo donde converge. 
+% </latex>
+
+%%
+%
+% 2b)
+% Implementamos el algoritmo anterior:
+%
+%   function c1 = myDivision(c0, b)
+%   c1 = c0 + c0*(1 -b*c0);
+%   while(abs(c1-c0)>=eps)
+%   c0 = c1;    
+%   c1 = c0 + c0*(1 -b*c0);
+%   
+%   end
+%   end 
+%%
+%
+% 2c)
+
+b = pi; 
+c0= linspace(0,1,1e5); %valores que toman los c0
+
+c1 = myDivision(c0, b);
+
+%Valor de convergencia en función de c0
+
+xx = c0;
+yy = nan(size(xx));
+
+for i = 1: numel(xx)
+    yy(i) = myDivision(xx(i), b);
+end
+
+figure 
+semilogx(xx,yy, 'MarkerSize', 20)
+
+%Titulo
+title('Gráfico 1 :Convergencia en función de c0')
+
+%Nombrar ejes
+xlabel('$x_0$ : valores iniciales', 'Interpreter', 'latex')
+ylabel('Valores de convergencia', 'Interpreter', 'latex')
+
+%%
+% Tome delta de la siguiente forma:
+%% 
+% <latex>
+% \begin{align*}
+% \delta = \frac{1}{5}
+% \end{align*}
+% </latex>
+
+%% 
+% <latex>
+% Entonces, tome $I = [\frac{1}{\pi} - \frac{1}{5}, \frac{1}{\pi} +
+% \frac{1}{5} ]$
+% </latex>
+%%
+% <latex>
+% \begin{align*}
+% A = \max_{(x,y) \in I} \abs{\frac{f''(x)}{f(y)}} &= \abs{\frac{2}{x^3y^2}}
+% \end{align*}
+% </latex>
+
+%%
+% <latex>
+% Tome $\eta =\min(1, \frac{1}{A})$ , entonces podemos asegurar
+% convergencia por el teorema 2.21 en $[\frac{1}{\pi} - \eta, \frac{1}{\pi}
+% + \eta]$, lo cual coincide con lo graficado. 
+% </latex>
+
+%%
+%
+% 2d) Aplicaría bisección primero, para poder encontrar un x0 lo
+% suficientemente cerca de su raíz. 
+
+%% 
+%
+% 3a)
+% Note que por conmutatividad del producto se sigue que 
+%%
+% <latex>
+% \begin{align}
+% \prod_{i=1}^{N_c} f(y_i, \theta) &= \prod_{i}^{N_c} \binom{n_i}{y_i} \prod_{i}^{N_c} \theta^{y_i} \prod_{i}^{N_c} (1- \theta)^{n_i - y_i} \\
+% &\prod_{i}^{N_c} \binom{n_i}{y_i} \theta^{H} (1 - \theta)^{M}
+% \end{align}
+% \text{donde } $H = \displaystyle\sum_{i}^{N_c} y_i $ \text{y } $M = \displaystyle\sum_{i}^{N_c} n_i - y_i $. 
+% </latex>
+%%
+% Procedemos a calcular $l'(\theta)$ 
+% Note que 
+%%
+% <latex>
+% \begin{align*}
+%  l(\theta) = \log(L(y_1, ... , y_N, \theta) = \log\left(\prod_{i=1}^{N_c} f(y_i, \theta)\right)  
+% \end{align*}
+% </latex>
+%%
+% Por (1) y (2), se sigue que 
+%%
+% <latex>
+% \begin{align*}
+%    \log(L(y_1, ... , y_N, \theta) &= \log \left( \prod_{i}^{N_c} \binom{n_i}{y_i} \theta^{H} (1 - \theta)^{M} \right) \\
+%    &= \log\left(\prod_{i}^{N_c} \binom{n_i}{y_i}\right) + H \log(\theta) + M\log( 1-\theta)
+% \end{align*}
+% </latex>
+
+%%
+% Entonces
+%%
+% <latex>
+% \begin{align*}
+%    l'(\theta) = \frac{H}{\theta} - \frac{M}{1- \theta}
+% \end{align*}
+% </latex>
+%%
+% Al despejar e igualar a 0, obtenemos los puntos críticos de $l(\theta)$
+%%
+% <latex>
+% \begin{align*}
+%     l'(\theta) &= \frac{H}{\theta} - \frac{M}{1- \theta} = 0 \\
+%     &\Rightarrow \theta = \frac{H}{N}
+% \end{align*}
+% </latex>
+%%
+% donde N = H+ M. 
+
+%%
+% Además, este punto crítico en efecto es el máximo pues $l''(\theta) < 0$ y
+% por el criterio de la segunda derivada podemos asegurar que es el máximo. 
+
+
+%% 
+%
+% 3b) 
+
+%Leemos el archivo
+T = readtable('data.txt');
+
+%%
+%
+% 3c) 
+
+%Vectorizamos los datos
+m = T.Machos;
+h = T.Hembras;
+
+%Procedemos a calcular el valor que maximiza los datos suministrados 
+
+%Cantidad total de machos
+suma_m = sum(m);
+
+%Cantidad total de hembras
+suma_h = sum(h);
+
+%Valor que maximiza 
+maximo = suma_h/(suma_m + suma_h)
+
+%%
+%
+% 3d)
+f = @(x) suma_h/x - suma_m/(1-x);
+
+Secante(f,0.30,0.60)
+
+%%
+%
+% 3e)
+
+[x,fval,exitflag,output,jacob] = fsolve(f,0.50); 
+
+% Resultado del fsolve
+disp(x)
+
+%Algoritmo usado 
+disp(output)
+
+
+
+%% 
+%
+% 4a)
+% Por el teorema 2.10 de las notas sabemos que basta con demostrar que una
+% función es continua y que el valor absoluto de su derivada se puede
+% acotar por una constante menor que 1 para que el proceso de iteración simple converja a su punto fijo. 
+% Note que $g(x) = x -(x^2 -3)/2$ es claramente continuo pues es un
+% polinomio. 
+% Procedemos a analizar la derivada de g
+% Note que $|g'(x) |= |1 -x|$, la cual es una función creciente y alcanza
+% su máximo en su extremo derecho en el valor de 1, entonces podemos
+% asegurar que para todo $x \in (a,b)$ sucede que $|g'(x)| < 1$. 
+
+
+%%
+%
+% 4b)
+
+g = @(x) x -(x.^2 -3)./2;
+raiz = 1.732050807568877; %Valor de sqrt{3} con 15 decimales
+
+[c, secS] = iterSimple(g, 1.5);
+
+
+semilogy(1:numel(secS),abs(secS-raiz)/abs(raiz),'.-','MarkerSize',10); 
+
+
+%Titulo
+title('Gráfico 2 :Error relativo en función del número de iteraciones')
+
+%Nombrar ejes
+xlabel('Cantidad de iteraciones')
+ylabel('Error relativo')
+
+%%
+% ¿Cual es la pendiente de la recta en su grafica? ¿Qué representa dicha
+% pendiente?
+%%
+% Procedemos a calcular la pendiente de la recta
+pendiente = ((abs(secS(36)-raiz)/abs(raiz)) - (abs(secS(30)-raiz)/abs(raiz)))/(36-30)
+%%
+% La pendiente de la recta representa la velocidad a la que disminuye el
+% error, en este caso podemos observar que el error decrece de forma
+% lineal. 
+
+
+
+%%
+%
+% 4c)
+
+a = nan(1,79);
+
+for k = 1:79
+    a(k) = ( secS(k)*secS(k+2) - (secS(k+1)^2) )/ (secS(k) + secS(k+2) - 2*secS(k+1));
+end 
+%Graficar:
+
+semilogy(1:numel(a),abs(raiz - a)/abs(raiz),'.-','MarkerSize',10) 
+
+%Titulo
+title('Grafico 3 :Error relativo de $a$ en funcion del numero de iteraciones', 'Interpreter', 'Latex')
+
+%Nombrar ejes
+xlabel('Cantidad de iteraciones')
+ylabel('Error relativo de a','Interpreter', 'Latex' )
+%%
+% La convergencia parece ser más rápida en el 4c sin embargo, no para todas
+% las iteraciones pues después de treinta y tres el error comienza a
+% oscilar. 
+
+% El gráfico decrece de forma lineal aproximadamente hasta la iteración treinta,
+% después de eso oscila, después de la iteración treinta no presenta
+% monotonía, i.e. el error decrece linealmente hasta 30 y después oscila. 
+
+%%
+%
+% 5a)
+
+load('dataPolin.mat')
+
+size(dataX)
+size (dataY)
+
+%%
+%
+% 5b)
+pn = polyfit(dataX, dataY, 10)
+%%
+% La salida pn se interpreta como los coeficientes de un polinomio de grado
+% 10. Este debe ser de grado 10 pues hay 10 + 1 nodos. 
+
+
+%% 
+% 
+% 5c) 
+
+xx = linspace(-1,1);
+yy = polyval(pn, xx);
+
+figure
+plot(xx,yy), hold on
+plot(dataX,dataY,'.', 'MarkerSize', 15)
+
+%Titulo
+title('Gráfico 4 :Polinomio de interpolación')
+
+%Nombrar ejes
+ylabel('Polinomio pn')
+xlabel('Intervalos') %?????????
+
+
+%%
+%
+% 5d)
+
+%Creamos dos vectores que contengan los datos de los nodos 1,5,10
+nodos_nuevosX = [dataX(1) dataX(5) dataX(10)];
+nodos_nuevosY = [dataY(1) dataY(5) dataY(10)];
+
+pn_nuevo = polyfit(nodos_nuevosX, nodos_nuevosY, 2);
+yy_1 = polyval(pn_nuevo, xx);
+
+figure
+plot(xx,yy_1), hold on
+plot(nodos_nuevosX, nodos_nuevosY,'.', 'MarkerSize', 15)
+
+%Titulo
+title('Gráfico 4 :Polinomio de interpolación')
+
+%Nombrar ejes
+ylabel('Polinomio pn')
+xlabel('Intervalos') %?????????
+%%
+%Cuál es mejor? No tiene sentido realizar esta pregunta pues son funciones
+%realizadas con diferente cantidad de nodos.  
+
+
+
+%%
+%
+close all
+
+%%
+% *Código de funciones*
+
+%% Funciones
+
+function c1 = myDivision(c0, b)
+    c1 = c0 + c0.*(1 -b.*c0);
+   
+    while(abs(c1-c0)>=eps)
+        c0 = c1;    
+        c1 = c0 + c0.*(1 -b.*c0);
+   
+    end
+end
+
+function [root,seq] = iterSimple(f,x0)
+    Tol = eps;
+    iterMax = 80;
+    k = 1;
+    seq = [x0 f(x0)];
+    while(Tol && k<iterMax)
+        seq = [seq f(seq(end))];
+        k = k+1;
+    end
+    root = seq(end);
+end
+
+function [root,seq] = Secante(f,x0,x1)
+  Tol = 1e-8;
+  iterMax = 100;
+  count = 0;
+  f0 = f(x0);
+  f1 = f(x1);
+  if(abs(f0)<Tol)    
+      root = x0; seq = x0;
+  elseif(abs(f1)<Tol) 
+      root = x1; seq = x1;
+  else
+      seq = zeros(iterMax,1);
+      xNew = x1 - f1*(x1-x0)/(f1-f0);
+      fNew = f(xNew);
+      seq(count+1) = xNew;
+      while(count<iterMax && abs(x1-x0)>Tol)
+        count = count + 1;
+        x0 = x1;
+        x1 = xNew;
+        f0 = f1;
+        f1 = fNew;
+        xNew = x1 - f1*(x1-x0)/(f1-f0);
+        fNew = f(xNew);
+        seq(count+1) = xNew;
+      end
+      root = xNew;
+      seq = seq(1:count+1);
+  end
+end
+##### SOURCE END #####
+--></body></html>
